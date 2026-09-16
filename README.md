@@ -8,6 +8,17 @@ Then we analyzed the dataset by looking into the correlation analysis. We decide
 Then we started with Model Development. Now, I decided that I will approach this project without using SMOTE. So, I used thresholding instead. We looked into Random Forest, LightGBM and XGBoost. For the most of the project we looked into maximizing the recall. However, because we lost a lot of the precision, right now we are trying to maximize ROC-AUC.
 Right now our achieved metrics are well below the SOTA. We are taking inspiration right now from the paper: Machine Learning–Based Customer Churn Prediction in Telecommunication Industry by Mettle, Henry et. al.
 
+
+## Plan:-
+
+Dataset (Client) --> Load --> Encode --> Clean --> Training --> (model) --> Inference
+
+api layer (router) --> Inference
+
+EC2 instance runs the app (main.py)
+
+the app calls the inference
+
 ## Reference Papers
 
 **Mettle et al. (2026), "Machine Learning–Based Customer Churn Prediction in Telecommunication Industry"** — Compares Decision Tree, Random Forest, XGBoost, and Logistic Regression on the IBM Telco dataset, tuned via grid search + 5-fold CV, no resampling (relies on class weighting). Best model: Random Forest at 84.73% accuracy, 84.62% F1, 93.86% ROC-AUC. Note: some figures/tables in the paper appear inconsistent (dataset totals don't match across sections, and a few confusion matrices are mislabeled with breast-cancer class names), so treat their numbers as a rough benchmark rather than an exact target.
